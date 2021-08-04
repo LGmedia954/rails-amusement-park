@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  skip_before_action :verified_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -17,5 +18,4 @@ class SessionController < ApplicationController
     session.delete("user_id")
     redirect_to root_path
   end
-
 end
